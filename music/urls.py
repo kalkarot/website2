@@ -6,3 +6,4 @@ urlpatterns = [
     url('$', views.index, name='index'),
 ]
 
+hi
