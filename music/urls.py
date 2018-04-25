@@ -5,5 +5,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     #/music/712/
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),.
 ]
