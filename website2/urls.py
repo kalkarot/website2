@@ -7,4 +7,3 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('music/', include('music.urls')),
 ]
-.
