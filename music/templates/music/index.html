@@ -1,26 +1,18 @@
-<!-- Loads the path to your static files -->
-{%  load staticfiles %}
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bottstrap/3.3.6/css/boootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+{% extends 'music/base.html' %}
 
-<nav class="navbar-default">
-    <div class="container-fluid">
+{% block body %}
+        <ul>
+            {%  for album in all_albums %}
+            <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
 
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'music:index' %}">Viberr</a>
-        </div>
+                <form action="{% url 'music:album-delete' album.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="album_id" value="{{ album.id }}"/>
+                    <button type="submit" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </form>
 
-    </div>
-</nav>
-
-
-{%  if all_albums %}
-    <h3>Here are all my Albums:</h3>
-    <ul>
-        {%  for album in all_albums %}
-        <li><a href="{% url 'music:details' album.id %}">{{ album.album_title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>You Don't have any albums</h3>
-{% endif %}
+            {% endfor %}
+        </ul>
+{% endblock %}

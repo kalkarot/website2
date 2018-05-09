@@ -1,3 +1,10 @@
 body{
     background: white url("images/Savage_51_1253_Widetone_Seamless_Background_Paper_45640.jpg")
 }
+.navbar{
+    border-radius: 0;
+}
+
+.navbar-brand{
+    font-family: 'Satisfy', cursive;
+}
